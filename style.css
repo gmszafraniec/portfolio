@@ -150,13 +150,6 @@ body {
     gap: 0.5rem;
 }
 
-.circle {
-    position: absolute;
-    transform: translateX(-30%);
-    width: 80vh;
-    z-index: -1;
-}
-
 .menu {
     grid-row-start: 2;
     grid-column-start: 2;
@@ -317,4 +310,92 @@ body {
 
 .contact_content {
     background-color: #AB44E0;
+}
+
+@media only screen and (max-width: 1000px) {
+    
+    .main-container {
+        height: 100vh;
+        width: min(100vh - 3rem, 1140px);
+        margin-inline: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        grid-template-columns: 1fr 3fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        gap: 0.5rem;
+    }
+
+    .title {
+        font-family: 'Amatic SC', sans-serif;
+        text-transform: uppercase;
+        font-size: 1.8rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        writing-mode: horizontal-tb;
+        text-orientation: unset;
+        transform: rotate(0deg);
+        transition: all 1s;
+        position: absolute;
+        top: 10vh;
+    }
+
+    .title p {
+        font-size: 2.5rem;
+    }
+    
+    .title#rotate {
+        transform: rotate(0deg) translate(0,0);
+        transition: all 2s;
+    }
+
+    #head {
+        width: 20rem;
+        height: 20rem;
+        rotate: 0deg;
+        position: absolute;
+        display: none;
+        opacity: 0;
+        right: auto;
+        left: -18rem;
+        animation: vanish 0.5s;
+    
+    }
+    
+    .title#rotate #head {
+        display: block;
+        opacity: 1;
+        animation: appear 1s, float 3.5s ease-in-out infinite;
+    
+    }
+
+    .menu {
+        min-width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        gap: 1rem;
+        position: absolute;
+        top: 20vh;
+    }
+
+    .line {
+        font-family: 'Amatic SC', sans-serif;
+        font-weight: 900;
+        font-size: 6rem;
+        margin-block: 1rem;
+    }
+
+    .content {
+        padding: 1rem;
+        margin: 5rem;
+        font-size: 2rem;
+        transform: translateY(5rem);
+    }
+    
 }
