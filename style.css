@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+:root {
+    --orange: #E0712C;
+    --purple: #AB44E0;
+    --green: #c2e13f;
+    --blue: #4BDBE1;
+
+}
+
+/* CSS RESET */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+body {
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+
+input, button, textarea, select {
+    font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+
+h1, h2, h3, h4 {
+    text-wrap: balance;
+}
+
+/* CSS PROPER */
+
+body {
+    background: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.line {
+    font-family: 'Amatic SC', sans-serif;
+    font-weight: 900;
+    font-size: 3rem;
+    margin-block: 1rem;
+}
+
+.line:nth-child(1):hover {
+    color: var(--orange);
+}
+
+.line:nth-child(2):hover {
+    color: var(--green);
+}
+
+.line:nth-child(3):hover {
+    color: var(--blue);
+}
+
+.line:nth-child(4):hover {
+    color: var(--purple);
+}
+
+.word {
+    transition: all 500ms;
+    cursor: pointer;
+}
+
+.menu:has(.fancy:hover) .word:not(.fancy:hover) {
+    opacity: 0.2;
+}
+
+.fancy:hover {
+    transform: scale(120%);
+    transition: all 300ms;
+    animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(-2%);
+    }
+    50% {
+        transform: translateY(2%);
+    }
+    100% {
+        transform: translateY(-2%);
+    }
+}
+
+.fancy > .letter {
+    display: inline-block;
+    transition: transform 500ms ease;
+}
+
+.fancy:hover > .letter:nth-child(1) {
+    transform: translate(-20%, 20%) rotate(-10deg);
+}
+
+.fancy:hover > .letter:nth-child(2) {
+    transform: translate(0%, -10%) rotate(10deg);
+}
+
+.fancy:hover > .letter:nth-child(3) {
+    transform: translate(20%, 10%) rotate(5deg);
+}
+
+.fancy:hover > .letter:nth-child(4) {
+    transform: translate(10%, -5%) rotate(10deg);
+}
+
+.fancy:hover > .letter:nth-child(5) {
+    transform: translate(5%, -10%) rotate(5deg);
+}
+
+.fancy:hover > .letter:nth-child(6) {
+    transform: translate(20%, 10%) rotate(-5deg);
+}
+
+.fancy:hover > .letter:nth-child(7) {
+    transform: translate(10%, -5%) rotate(-10deg);
+}
+
+.fancy:hover > .letter:nth-child(8) {
+    transform: translate(20%, 10%) rotate(10deg);
+}
+
+
+.main-container {
+    height: 100vh;
+    width: min(100vh - 3rem, 1140px);
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0.5rem;
+}
+
+.circle {
+    position: absolute;
+    transform: translateX(-30%);
+    width: 80vh;
+    z-index: -1;
+}
+
+.menu {
+    grid-row-start: 2;
+    grid-column-start: 2;
+    min-width: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.title {
+    font-family: 'Amatic SC', sans-serif;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    grid-row-start: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    writing-mode: vertical-lr;
+    text-orientation: use-glyph-orientation;
+    transform: rotate(180deg);
+    transition: all 1s;
+}
+
+.title p {
+    font-size: 2.5rem;
+}
+
+.title#rotate {
+    transform: rotate(270deg) translate(6rem, -5rem);
+    transition: all 2s;
+}
+
+#head {
+    width: 15rem;
+    height: 15rem;
+    rotate: 90deg;
+    position: absolute;
+    display: none;
+    opacity: 0;
+    right: 12rem;
+    animation: vanish 0.5s;
+
+}
+
+.title#rotate #head {
+    display: block;
+    opacity: 1;
+    animation: appear 1s, float 3.5s ease-in-out infinite;
+
+}
+
+@keyframes appear {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+    50% {
+        display: none;
+        opacity: 0;
+    }
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}
+
+@keyframes vanish {
+    0% {
+        display: block;
+        opacity: 1;
+    }
+    100% {
+        display: none;
+        opacity: 0;
+    }
+    
+}
+
+.content {
+    grid-column-start: 3;
+    grid-row-start: 2;
+    padding: 1rem;
+}
+
+
+.content p {
+    font-family: 'Nunito Sans', sans-serif;
+    text-indent: 1rem;
+    text-align: justify;
+}
+
+.box {
+    display: none;
+    opacity: 0;
+    padding: 0.5rem;
+    animation: vanish 0.5s;
+}
+
+.box#visible {
+    display: block;
+    opacity: 1;
+    animation: appear 1s;
+}
+
+.aboutme_content {
+    border: var(--orange) solid 3px;
+    border-radius: 1rem;
+}
+
+.projects_content {
+    border: #c2e13f 1px solid;
+}
+
+.projects_content#visible {
+    position: relative;
+}
+
+.project1 {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    background-color: #c2e13f;
+    transition: all 0.5s;
+}
+
+.project2 {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    background-color: #c2e13f;
+    transform: translate(150px, 200px);
+    transition: all 0.5s;
+}
+
+.project3 {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    background-color: #c2e13f;
+    transform: translate(250px, -50px);
+    transition: all 0.5s;
+}
+
+.project1:hover,.project2:hover,.project3:hover {
+    scale: 1.2;
+    transition: all 1s ease-in-out;
+}
+
+
+
+.skills_content {
+    background-color: #4BDBE1;
+}
+
+.contact_content {
+    background-color: #AB44E0;
+}
