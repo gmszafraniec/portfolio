@@ -276,7 +276,6 @@ body {
 .box {
     display: none;
     opacity: 0;
-    padding: 0.5rem;
     animation: vanish 0.5s;
 }
 
@@ -284,6 +283,7 @@ body {
     display: block;
     opacity: 1;
     animation: appear 1s;
+
 }
 
 .aboutme_content {
@@ -294,12 +294,31 @@ body {
 .projects_content {
     display: none;
     opacity: 0;
-    animation: vanish 0.5s;
+    transition-property: display opacity;
+    transition-duration: 1s;
+    transition-behavior: allow-discrete;
 }
 
 .projects_content#visible {
+    display: block;
+    opacity: 1;
+    padding: 0;
+    margin-inline: auto;
     height: 100%;
-    animation: appear 1s;
+
+    @starting-style {
+        opacity: 0;
+    }
+}
+
+.project-box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 #visible.projects_content .project1,
@@ -307,20 +326,17 @@ body {
 #visible.projects_content .project3 {
     display: block;
     opacity: 1;
-    background-color: #c2e13f;
-    width: 100px;
-    height: 100px;
-    border: green solid 2px;
+    width: 100%;
+    height: 100%;
+    border: #c2e13f solid 2px;
     border-radius: 1rem;
-    margin-inline: auto;
-    margin-block: 1rem;
     transition: transform 0.5s ease;
 }
 
 #visible.projects_content .project1:hover,
 #visible.projects_content .project2:hover,
 #visible.projects_content .project3:hover {
-    transform: scale(1.5);
+    transform: scale(1.1);
     transition: transform 0.5s ease;
 }
 
@@ -330,14 +346,69 @@ body {
 }
 
 .skills_content {
-    background-color: #4BDBE1;
+    display: none;
+    opacity: 0;
+    transition-property: display opacity;
+    transition-duration: 1s;
+    transition-behavior: allow-discrete;
+}
+
+.skills_content#visible {
+    display: block;
+    opacity: 1;
+    padding: 0;
+    margin-inline: auto;
+    height: 100%;
+
+    @starting-style {
+        opacity: 0;
+    }
+}
+
+.skill-box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    gap: 0.5rem;
+}
+
+.skill {
+    border: #4BDBE1 solid 1px;
+    border-radius: 1rem;
+    height: 90px;
+    width: 90px;
 }
 
 .contact_content {
-    background-color: #AB44E0;
+    border: #AB44E0 solid 1px;
+    height: 100%;
 }
 
-@media only screen and (max-width: 1000px) {
+.contact-box {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-box p {
+    font-family: 'Amatic SC', sans-serif;
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+
+.contact-box span {
+    font-weight: 900;
+    color: var(--purple);
+}
+
+
+@media only screen and (max-width: 980px) {
     
     .main-container {
         height: 100vh;
